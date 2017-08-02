@@ -1,0 +1,38 @@
+{
+  "name": "ngc-float-button",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "tsc",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "prepublish": "tsc -p ./tsconfig.publish.json"
+  },
+  "keywords": [
+    "angular2",
+    "angular",
+    "npm",
+    "package",
+    "module",
+    "float",
+    "button",
+    "material",
+    "float button",
+    "google"
+  ],
+  "author": "Gustavo Costa - @GustavoCostaW",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/platform-server": "^4.0.0",
+    "rxjs": "^5.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.7",
+    "typescript": "^2.4.1"
+  }
+}
