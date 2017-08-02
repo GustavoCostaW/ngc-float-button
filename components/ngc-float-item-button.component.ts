@@ -1,3 +1,5 @@
+/* created by @GustavoCostaW https://github.com/gustavocostaw/ngc-float-button  */
+
 import {
   Component,
   Input,
@@ -10,7 +12,7 @@ import {
 
 @Component({
   selector: 'ngc-item-button',
-  styleUrls: ['./float-item-button.component.css'],
+  styleUrls: ['./ngc-float-item-button.component.css'],
   template: `
     <div #elementref class="item" (click)="clicked.emit($event)">
         <div class="content-wrapper" #contentref>

@@ -1,3 +1,5 @@
+/* created by @GustavoCostaW https://github.com/gustavocostaw/ngc-float-button  */
+
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +22,7 @@ import {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ngc-float-button',
-  styleUrls: ['./float-button.component.css'],
+  styleUrls: ['./ngc-float-button.component.css'],
   template: `
     <nav class="fab-menu" [class.active]="state.getValue().display">
         <a class="fab-toggle" (click)="toggle()">
