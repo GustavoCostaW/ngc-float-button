@@ -1,0 +1,29 @@
+{
+  "apps": [
+    {
+      "root": "sample",
+      "outDir": "dist",
+      "index": "index.html",
+      "main": "main.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "ngc",
+      "mobile": false
+    }
+  ],
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}
