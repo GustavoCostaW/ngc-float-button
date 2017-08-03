@@ -79,13 +79,15 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
   }
 
   // transition
-  private animateButtons() {
+  private animateButtons(eventType) {
     this.buttons.toArray().forEach( (btn, i) => {
       i+=1;
       let style = btn.elementref.nativeElement.style;
 
-      if (this.state.getValue().display) {
-        style['display'] = 'flex';
+      if (eventType !== 'directionChanged' && this.state.getValue().display) {
+        style['transform'] = 'scale(1)';
+        style['transition-duration'] = '0s';
+
 
         if (btn.timeout) {
           clearTimeout(btn.timeout);
@@ -95,14 +97,13 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
       setTimeout( () => {
         style['transition-duration'] = this.state.getValue().display ? `${ 90 + (100 * i) }ms` : '';
         style['transform'] = this.state.getValue().display ? this.getTranslate(i) : '';
-      });
+      }, 50);
 
-      if (!this.state.getValue().display) {
+      if (eventType !== 'directionChanged' && !this.state.getValue().display) {
         btn.timeout = setTimeout( () => {
-          style['display'] = 'none';
+          style['transform'] = 'scale(0)';
         }, 90 + (100 * i) );
       }
-
     });
   }
 
@@ -150,7 +151,7 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
     });
 
     const sub = this.state.subscribe( v => {
-      this.animateButtons();
+      this.animateButtons(v.event);
 
       this.events.next({
         display: v.display,

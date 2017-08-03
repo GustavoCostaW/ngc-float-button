@@ -9,6 +9,7 @@
     justify-content: center;
     cursor: pointer;
     z-index: 9;
+    position: relative;
 }
 
 .fab-toggle {
@@ -16,7 +17,6 @@
   border-radius: 100%;
   width: 40px;
   height: 40px;
-  position: absolute;
   color: white;
   text-align: center;
   line-height: 50px;
