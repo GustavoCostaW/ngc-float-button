@@ -6,8 +6,7 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-  ChangeDetectionStrategy,
-  ViewEncapsulation
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
@@ -19,7 +18,7 @@ import {
           <div class="content" [style.display]="content ? 'block' : 'none'">{{content}}</div>
         </div>
         <a class="fab-item">
-          <md-icon class="material-content-icon"> {{icon}} </md-icon>
+           <md-icon class="material-content-icon"> {{icon}} </md-icon>
         </a>
     </div>
   `,

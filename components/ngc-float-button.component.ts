@@ -158,7 +158,6 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
         direction: v.direction
       });
     });
-
     this.subs.push(sub);
   }
 
