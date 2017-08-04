@@ -1,6 +1,6 @@
 {
   "name": "ngc-float-button",
-  "version": "0.1.0",
+  "version": "0.1.8",
   "description": "Google Material Float Button - Implementation for Angular v4+",
   "scripts": {
     "start": "tsc",
@@ -37,7 +37,6 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/platform-server": "^4.0.0",
     "@angular/router": "^4.3.3",
-    "ngc-float-button": "^0.0.8",
     "rxjs": "^5.4.2",
     "zone.js": "0.8.13"
   },
