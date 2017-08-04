@@ -7,7 +7,7 @@
     "emitDecoratorMetadata": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "rootDir": ".",
     "outDir": "dist",
@@ -21,7 +21,7 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "files": [
-    "./index.ts"
+    "index.ts"
   ],
   "exclude": [
     "node_modules",
