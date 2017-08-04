@@ -9,7 +9,6 @@
     justify-content: center;
     cursor: pointer;
     z-index: 9;
-    position: relative;
 }
 
 .fab-toggle {
