@@ -10,8 +10,8 @@
     <button md-button (click)="open.next(false)">Close</button>
 </div>
 
-<ngc-float-button icon="group" (events)="output($event)" [open]="open" [direction]="direction">
-    <ngc-item-button icon="group" content="float item 1"></ngc-item-button>
-    <ngc-item-button icon="group" content="float item 2"></ngc-item-button>
-    <ngc-item-button icon="group" content="float item 3"></ngc-item-button>
+<ngc-float-button icon="add" (events)="output($event)" [open]="open" [direction]="direction">
+    <ngc-float-item-button icon="person_add" content="float item 1"></ngc-float-item-button>
+    <ngc-float-item-button icon="gps_fixed" content="float item 2"></ngc-float-item-button>
+    <ngc-float-item-button icon="mode_edit" content="float item 3"></ngc-float-item-button>
 </ngc-float-button>

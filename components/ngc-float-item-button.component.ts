@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'ngc-item-button',
+  selector: 'ngc-float-item-button',
   styleUrls: ['./ngc-float-item-button.component.css'],
   template: `
     <div #elementref class="item" (click)="clicked.emit($event)">
