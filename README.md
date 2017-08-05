@@ -94,7 +94,7 @@ Sample:
     ...
 
     // with this our FAB will be started open.
-    private open:BehaviorSubject<boolean> = new BehaviorSubject(true);
+    open:BehaviorSubject<boolean> = new BehaviorSubject(true);
 
     ...
 ```
@@ -134,7 +134,7 @@ Sample:
 ```Typescript
     ...
 
-    private output(log) {
+    output(log) {
         console.log(log);
     }
 
@@ -148,6 +148,11 @@ Sample:
 
 #### Customization
 
-If you need change some css property in `ngc-float-button` you need use `/deep/` selector in our parent css component.
+If you need change some css property in `ngc-float-button` you need use `/deep/` selector in parent css component.
 
 More info about customization soon.
+
+
+#### CSS animations credits
+
+[`The css animations were inspired by this`](https://embed.plnkr.co/gist/00de5ab564446dcb8be067d44e67a692)
