@@ -24,7 +24,7 @@ npm install ngc-float-button --save
 
 ## Usage
 
-#### 1. You need add the Google Material icons in your `index.html`:
+#### 1. You need to add the Google Material icons in your `index.html`:
 
 ```HTML
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -86,15 +86,17 @@ The `ngc-float-button` component has two `@Input` properties:
 
 `[open]="open"` and `[direction]="direction"`
 
-`[open]` property waiting for `BehaviorSubject`, with this you can open or close the FAB dispatching events.
+`[open]` property waiting for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
 
 Sample:
 
+
 ```Typescript
     ...
+    //our parent component
 
     // with this our FAB will be started open.
-    open:BehaviorSubject<boolean> = new BehaviorSubject(true);
+    private open:BehaviorSubject<boolean> = new BehaviorSubject(true);
 
     ...
 ```
@@ -125,7 +127,7 @@ Sample:
     ...
 ```
 
-#### @Output properties
+#### @Output property
 
 You can listener events in `ngc-float-button` subscribing the `(events)` output.
 
@@ -146,13 +148,13 @@ Sample:
     ...
 ```
 
-#### Customization
+## Customization
 
-If you need change some css property in `ngc-float-button` you need use `/deep/` selector in parent css component.
+If you need change some css property in `ngc-float-button` you need to use `/deep/` selector in parent css component.
 
 More info about customization soon.
 
 
-#### CSS animations credits
+## CSS animations credits
 
 [`The css animations were inspired by this`](https://embed.plnkr.co/gist/00de5ab564446dcb8be067d44e67a692)
