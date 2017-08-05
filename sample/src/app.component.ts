@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class AppComponent {
 
-  private open:BehaviorSubject<boolean> = new BehaviorSubject(true);
+  private open:BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   private output(log) {
     console.log(log);
