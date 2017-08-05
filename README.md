@@ -5,6 +5,11 @@ Implementation for Angular v4+
 
 ![](http://g.recordit.co/yfaZdBGGCY.gif)
 
+
+##Demo
+
+[`Check the ngc-float-button demo here`](https://stackblitz.com/edit/ngc-float-button)
+
 ## Installation
 
 First you need to install the npm module:
@@ -74,10 +79,6 @@ The FAB template
         <ngc-float-item-button icon="mode_edit" content="float item 3"></ngc-float-item-button>
     </ngc-float-button>
 ```
-
-Well, with only that you can see this result:
-
-![](http://g.recordit.co/a40l3UuTQe.gif)
 
 ## API
 
