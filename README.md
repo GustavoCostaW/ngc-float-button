@@ -6,7 +6,7 @@ Implementation for Angular v4+
 ![](http://g.recordit.co/yfaZdBGGCY.gif)
 
 
-## [`Demo`](https://ngc-float-button.stackblitz.io/)
+## [`Demo`](http://bit.ly/2hydANi)
 
 ## Installation
 
