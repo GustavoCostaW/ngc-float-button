@@ -1,3 +1,7 @@
+:host {
+  position: absolute;
+}
+
 .fab-menu {
     box-sizing: border-box;
     font-size: 20px;
