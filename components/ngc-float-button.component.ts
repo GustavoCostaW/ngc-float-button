@@ -37,7 +37,7 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
   private elementref: HTMLElement;
   private subs: Subscription[] = [];
 
-  private state: BehaviorSubject<any> = new BehaviorSubject({
+  public state: BehaviorSubject<any> = new BehaviorSubject({
     display: false,
     direction: 'top',
     event: 'start',
