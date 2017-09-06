@@ -158,6 +158,9 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
         event: v.event,
         direction: v.direction
       });
+      
+      // make angular happy
+      this.cd.detectChanges();
     });
     this.subs.push(sub);
   }
@@ -182,9 +185,7 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
             event: v ? 'open' : 'close',
             display: v
           });
-
-          // make angular happy
-          this.cd.detectChanges();
+          
         }
       });
 
