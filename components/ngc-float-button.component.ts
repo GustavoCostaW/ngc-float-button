@@ -26,7 +26,7 @@ import {
   template: `
     <nav class="fab-menu" [class.active]="state.getValue().display">
         <a class="fab-toggle" (click)="toggle()">
-          <md-icon class="material-content-icon"> {{icon}} </md-icon>
+          <mat-icon class="material-content-icon"> {{icon}} </mat-icon>
         </a>
         <ng-content></ng-content>
     </nav>

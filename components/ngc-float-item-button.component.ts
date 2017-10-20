@@ -18,7 +18,7 @@ import {
           <div class="content" [style.display]="content ? 'block' : 'none'">{{content}}</div>
         </div>
         <a class="fab-item">
-           <md-icon class="material-content-icon"> {{icon}} </md-icon>
+           <mat-icon class="material-content-icon"> {{icon}} </mat-icon>
         </a>
     </div>
   `,
