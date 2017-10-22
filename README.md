@@ -6,7 +6,7 @@ Implementation for Angular v4+
 ![](http://g.recordit.co/yfaZdBGGCY.gif)
 
 
-## [`Demo`](http://bit.ly/2hydANi)
+## [`Demo`](http://bit.ly/2yIya2f)
 
 ## Installation
 
@@ -131,7 +131,7 @@ Sample:
 
 #### @Output property
 
-You can listener events in `ngc-float-button` subscribing the `(events)` output.
+You can listen the all events emitted by `ngc-float-button` subscribing in the `(events)` observable output.
 
 Sample:
 
