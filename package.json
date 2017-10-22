@@ -1,12 +1,11 @@
 {
   "name": "ngc-float-button",
-  "version": "1.1.0",
   "description": "Google Material Float Button - Implementation for Angular v4+",
   "scripts": {
-    "start": "tsc",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "prepublish": "tsc -p ./tsconfig.publish.json"
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/ngc-float-button.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ngc-float-button.umd.min.js",
+    "build": "npm run transpile && npm run package && npm run minify"
   },
   "keywords": [
     "angular2",
@@ -14,39 +13,32 @@
     "npm",
     "package",
     "module",
-    "float",
-    "button",
-    "material",
     "float button",
-    "google"
+    "float",
+    "button"
   ],
-  "main": "index.ts",
   "author": "Gustavo Costa - @GustavoCostaW",
   "license": "MIT",
   "dependencies": {
-    "@angular/animations": "^4.0.0",
-    "@angular/cdk": "^2.0.0-beta.8",
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.0.0",
-    "@angular/http": "^4.0.0",
-    "@angular/material": "^2.0.0-beta.8",
-    "@angular/platform-browser": "^4.0.0",
-    "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/platform-server": "^4.0.0",
-    "@angular/router": "^4.0.0",
-    "rxjs": "^5.4.2",
-    "zone.js": "0.8.13"
+    "@angular/cdk": ">=2.0.0-beta.12",
+    "@angular/common": ">=4.4.4",
+    "@angular/core": ">=4.4.4",
+    "@angular/forms": "^4.4.6",
+    "@angular/material": "^2.0.0-beta.12",
+    "@angular/http": ">=4.4.4",
+    "@angular/platform-browser": ">=4.4.4",
+    "core-js": ">=2.4.1"
   },
   "devDependencies": {
-    "@angular/cli": "1.2.1",
-    "@angular/compiler-cli": "4.2.6",
-    "@types/node": "^8.0.7",
-    "typescript": "^2.4.1",
-    "codelyzer": "2.0.0",
-    "ts-node": "2.1.2",
-    "tslint": "4.5.1"
+    "@angular/compiler": ">=4.4.4",
+    "@angular/compiler-cli": ">=4.4.4",
+    "@angular/platform-browser": ">=4.4.4",
+    "@angular/platform-browser-dynamic": ">=4.4.4",
+    "rxjs": ">=5.4.2",
+    "zone.js": ">=0.6.23",
+    "@types/node": ">=8.0.7",
+    "rollup": ">=0.50.0",
+    "typescript": ">=2.4.1",
+    "uglify-js": ">=3.1.2"
   }
 }
