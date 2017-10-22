@@ -10,7 +10,7 @@ Implementation for Angular v4+
 
 ## Installation
 
-First you need to install the npm module:
+First, you need to install the npm module:
 
 ```sh
 npm install ngc-float-button --save
@@ -18,13 +18,14 @@ npm install ngc-float-button --save
 
 ## Dependencies
 
-#### Angular Material
 #### Google Material Icons
-#### Angular v4+
+#### Angular Material >= beta.12
+#### Angular >= 4.4.4
 
 ## Usage
 
 #### 1. You need to add the Google Material icons in your `index.html`:
+##### The Google Material Icons is required by Angular Material <mat-icon> component
 
 ```HTML
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -32,7 +33,7 @@ npm install ngc-float-button --save
 
 Check the [`Google Material Icons site`](https://material.io/icons/) to see all icons
 
-#### 2. Import the `NgcFloatButtonModule`:
+#### 2. Import the `NgcFloatButtonModule` in your project:
 
 ```ts
 import {BrowserModule} from '@angular/platform-browser';
@@ -82,14 +83,15 @@ The FAB template
 
 #### @Input properties
 
-The `ngc-float-button` component has two `@Input` properties:
+The `ngc-float-button` component has three `@Input` properties:
 
-`[open]="open"` and `[direction]="direction"`
+`icon="icon_name"`, `[open]="open"` and `[direction]="direction"`
+
+`icon or [icon]` property waiting for `icon_name` listed in Google Material Icons site.
 
 `[open]` property waiting for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
 
 Sample:
-
 
 ```Typescript
     ...
