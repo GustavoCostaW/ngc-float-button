@@ -258,7 +258,7 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
           });
 
           // make angular happy
-          this.cd.detectChanges();
+          this.cd.markForCheck();
         }
       });
 
