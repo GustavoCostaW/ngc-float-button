@@ -87,9 +87,9 @@ The `ngc-float-button` component has three `@Input` properties:
 
 `icon="icon_name"`, `[open]="open"` and `[direction]="direction"`
 
-`icon or [icon]` property waiting for `icon_name` listed in Google Material Icons site.
+`icon or [icon]` property wait for `icon_name` listed in Google Material Icons site.
 
-`[open]` property waiting for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
+`[open]` property wait for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
 
 Sample:
 
@@ -97,8 +97,8 @@ Sample:
     ...
     //our parent component
 
-    // with this our FAB will be started open.
-    private open:BehaviorSubject<boolean> = new BehaviorSubject(true);
+    // with 'true' our FAB will be started open.
+    private open:BehaviorSubject<boolean> = new BehaviorSubject(true); // true is the initial state of FAB
 
     ...
 ```
@@ -113,7 +113,7 @@ Sample:
     ...
 ```
 
-`[direction]` property waiting for `string` type value that's accepted `top`, `right`, `bottom`, `left`, remember the `[property-binding]` is optional but if you need change this property dynamically it's required.
+`[direction]` property wait for `string` type value that's accepted `top`, `right`, `bottom`, `left`, remember the `[property-binding]` is optional but if you need change this property dynamically it's required, `top` is the default value.
 
 Sample:
 
