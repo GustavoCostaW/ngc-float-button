@@ -91,6 +91,8 @@ The `ngc-float-button` component has three `@Input` properties:
 
 `[open]` property waits for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
 
+`[isDisabled]` property expects a boolean to toggle if a button is clickable. Defaults to `false`.
+
 Sample:
 
 ```Typescript
