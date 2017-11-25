@@ -89,6 +89,9 @@ export class NgcFloatItemButtonComponent {
   @ViewChild('contentref') contentref;
 
   emitClickEvent($event: Event): void {
+    if (this.isDisabled)
+      return;
+
     this.clicked.emit($event);
   }
 }
