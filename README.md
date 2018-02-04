@@ -136,7 +136,7 @@ Sample: `[direction]`
 `ngc-float-item-button` properties:
 
 - `icon` property expects for `icon_name` listed in Google Material Icons site.
-- `color` property define the background color and expects a `background:{value}` valid value. Defaults to `#dd0031`.
+- `color` property define the background color and expects a `background:{value}` valid value. Defaults to `white`.
 - `disabled` property expects a `boolean` to toggle if a button is clickable. Defaults to `false`.
 - `content` property expects `string` value to show additional text in `float-item-button`
 
