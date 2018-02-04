@@ -83,24 +83,28 @@ The FAB template
 
 #### @Input properties
 
-The `ngc-float-button` component has three `@Input` properties:
+`ngc-float-button` properties:
 
-`icon="icon_name"`, `[open]="open"` and `[direction]="direction"`
+- `icon` property expects for `icon_name` listed in Google Material Icons site.
 
-`icon or [icon]` property waits for `icon_name` listed in Google Material Icons site.
+- `[open]` property expects for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
 
-`[open]` property waits for `BehaviorSubject` type, with this you can open or close the FAB dispatching events.
+- `disabled` property expects a `boolean` to toggle if a button is clickable. Defaults to `false`.
 
-`[isDisabled]` property expects a boolean to toggle if a button is clickable. Defaults to `false`.
+- `color` property define the background color and expects a `background:{value}` valid value. Defaults to `#dd0031`.
 
-Sample:
+- `direction` property expects for `string` value type value that's accepted `top`, `right`, `bottom`, `left`. `top` is the default value.
+
+- `spaceBetweenButtons` - property expects a valid number value in `px` to define the space between each `float-button-item`, Defaults to `55`
+
+Sample: `[open]`
 
 ```Typescript
     ...
     //our parent component
 
     // with 'true' our FAB will be started open.
-    private open:BehaviorSubject<boolean> = new BehaviorSubject(true); // true is the initial state of FAB
+    public open:BehaviorSubject<boolean> = new BehaviorSubject(true); // true is the initial state of FAB
 
     ...
 ```
@@ -115,9 +119,7 @@ Sample:
     ...
 ```
 
-`[direction]` property waits for `string` type value that's accepted `top`, `right`, `bottom`, `left`, remember the `[property-binding]` is optional but if you need change this property dynamically it's required, `top` is the default value.
-
-Sample:
+Sample: `[direction]`
 
 ```HTML
     <div>
@@ -127,9 +129,16 @@ Sample:
         <button md-button (click)="direction='left'">Left</button>
     </div>
 
-    <ngc-float-button icon="add" [direction]="direction">
+    <ngc-float-button icon="add" direction="{{direction}}">
     ...
 ```
+
+`ngc-float-item-button` properties:
+
+- `icon` property expects for `icon_name` listed in Google Material Icons site.
+- `color` property define the background color and expects a `background:{value}` valid value. Defaults to `#dd0031`.
+- `disabled` property expects a `boolean` to toggle if a button is clickable. Defaults to `false`.
+- `content` property expects `string` value to show additional text in `float-item-button`
 
 #### @Output property
 
