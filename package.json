@@ -19,26 +19,27 @@
   ],
   "author": "Gustavo Costa - @GustavoCostaW",
   "license": "MIT",
-  "dependencies": {
-    "@angular/cdk": ">=2.0.0-beta.12",
-    "@angular/common": ">=4.4.4",
-    "@angular/core": ">=4.4.4",
-    "@angular/forms": "^4.4.6",
-    "@angular/material": "^2.0.0-beta.12",
-    "@angular/http": ">=4.4.4",
-    "@angular/platform-browser": ">=4.4.4",
-    "core-js": ">=2.4.1"
+  "peerDependencies": {
+    "@angular/core": ">=4.4.4"
   },
   "devDependencies": {
-    "@angular/compiler": ">=4.4.4",
-    "@angular/compiler-cli": ">=4.4.4",
-    "@angular/platform-browser": ">=4.4.4",
-    "@angular/platform-browser-dynamic": ">=4.4.4",
-    "rxjs": ">=5.4.2",
-    "zone.js": ">=0.6.23",
-    "@types/node": ">=8.0.7",
-    "rollup": ">=0.50.0",
-    "typescript": ">=2.4.1",
-    "uglify-js": ">=3.1.2"
+    "@angular/cdk": "^2.0.0-beta.12",
+    "@angular/common": "^4.4.4",
+    "@angular/compiler": "^4.4.4",
+    "@angular/compiler-cli": "^4.4.4",
+    "@angular/platform-browser": "^4.4.4",
+    "@angular/platform-browser-dynamic": "^4.4.4",
+    "@angular/core": "^4.4.4",
+    "@angular/forms": "^4.4.4",
+    "@angular/material": "^2.0.0-beta.12",
+    "@angular/animations": "^4.4.4",
+    "@angular/http": "^4.4.4",
+    "@types/node": "^8.5.9",
+    "core-js": "^2.4.1",
+    "rollup": "^0.50.0",
+    "rxjs": "^5.5.6",
+    "typescript": "^2.7.1",
+    "uglify-js": "^3.3.9",
+    "zone.js": "^0.6.23"
   }
 }
