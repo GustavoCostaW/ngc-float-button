@@ -7,7 +7,12 @@
 /dist/index.d.ts
 /dist/index.js.map
 /dist/index.metadata.json
+/dist/index.ngsummary.json
+/dist/node_modules
 /tmp
+/components/*.ngfactory.ts
+/components/*.ngsummary.json
+*.ngsummary.json
 
 # dependencies
 /node_modules
