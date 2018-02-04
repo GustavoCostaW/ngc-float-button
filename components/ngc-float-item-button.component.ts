@@ -69,11 +69,12 @@ import {
 
   `],
   template: `
-    <div #elementref class="item {{ isDisabled ? 'disabled' : ''}}" (click)="emitClickEvent($event)">
+    <div #elementref class="item {{ isDisabled ? 'disabled' : ''}}" 
+    (click)="emitClickEvent($event)">
         <div class="content-wrapper" #contentref>
           <div class="content" [style.display]="content ? 'block' : 'none'">{{content}}</div>
         </div>
-        <a class="fab-item">
+        <a class="fab-item" [style.backgroundColor]="color">
            <mat-icon> {{ icon }} </mat-icon>
         </a>
     </div>
@@ -81,16 +82,17 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgcFloatItemButtonComponent {
-  @Input() icon;
-  @Input() content;
+  @Input() icon: string;
+  @Input() content: string;
+  @Input() color: string = 'white';
   @Output() clicked: EventEmitter<any> = new EventEmitter();
-  @Input() isDisabled = false;
+  @Input() disabled: boolean = false;
   @ViewChild('elementref') elementref;
   @ViewChild('contentref') contentref;
 
-  emitClickEvent($event: Event): void {
-    if (this.isDisabled)
-      return;
+  emitClickEvent($event: Event) {
+    if (this.disabled)
+      return this.disabled;
 
     this.clicked.emit($event);
   }

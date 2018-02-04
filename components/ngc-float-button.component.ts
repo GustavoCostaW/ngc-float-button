@@ -42,7 +42,6 @@ import {
   }
 
   .fab-toggle {
-    background: #dd0031;
     border-radius: 100%;
     width: 40px;
     height: 40px;
@@ -90,7 +89,7 @@ import {
   `],
   template: `
     <nav class="fab-menu" [class.active]="(state | async).display">
-        <a class="fab-toggle" (click)="toggle()">
+        <a class="fab-toggle" (click)="toggle()" [style.backgroundColor]="color">
           <mat-icon> {{icon}} </mat-icon>
         </a>
         <ng-content></ng-content>
@@ -101,26 +100,32 @@ import {
 export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnChanges {
   private elementref: HTMLElement;
   private subs: Subscription[] = [];
+  public state: BehaviorSubject<any>;
 
-  public state: BehaviorSubject<any> = new BehaviorSubject({
-    display: false,
-    direction: 'top',
-    event: 'start',
-    spaceBetweenButtons: 55
-  });
-
-  @Input() icon;
-  @Input() direction;
-  @Input() spaceBetweenButtons;
+  @Input() icon: string;
+  @Input() direction: string;
+  @Input() spaceBetweenButtons: number = 55;
   @Input() open: Subject<boolean>;
+  @Input() color: string = '#dd0031';
+  @Input() disabled: boolean = false;
   @Output() events: Subject<any> = new Subject();
   @ContentChildren(NgcFloatItemButtonComponent) buttons;
 
   constructor(private element: ElementRef, private cd: ChangeDetectorRef) {
     this.elementref = element.nativeElement;
+
+    this.state = new BehaviorSubject({
+      display: false,
+      direction: 'top',
+      event: 'start',
+      spaceBetweenButtons: this.spaceBetweenButtons
+    });
   }
 
   public toggle() {
+    if (this.disabled) {
+      return this.disabled;
+    }
     this.state.next({
       ...this.state.getValue(),
       display: !this.state.getValue().display,
@@ -274,7 +279,7 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
   }
 
   ngOnDestroy() {
-    this.subs.map(v => {
+    this.subs.forEach(v => {
       v.unsubscribe();
     });
   }
