@@ -89,7 +89,7 @@ import {
 
   `],
   template: `
-    <nav class="fab-menu" [class.active]="state.getValue().display">
+    <nav class="fab-menu" [class.active]="(state | async).display">
         <a class="fab-toggle" (click)="toggle()">
           <mat-icon> {{icon}} </mat-icon>
         </a>
@@ -152,7 +152,6 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
       if (eventType !== 'directionChanged' && this.state.getValue().display) {
         style['transform'] = 'scale(1)';
         style['transition-duration'] = '0s';
-
 
         if (btn.timeout) {
           clearTimeout(btn.timeout);
