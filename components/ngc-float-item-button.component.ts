@@ -69,7 +69,7 @@ import {
 
   `],
   template: `
-    <div #elementref class="item {{ isDisabled ? 'disabled' : ''}}" 
+    <div #elementref class="item {{ disabled ? 'disabled' : ''}}" 
     (click)="emitClickEvent($event)">
         <div class="content-wrapper" #contentref>
           <div class="content" [style.display]="content ? 'block' : 'none'">{{content}}</div>
