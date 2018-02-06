@@ -93,9 +93,9 @@ The FAB template
 
 - `color` property define the background color and expects a `background:{value}` valid value. Defaults to `#dd0031`.
 
-- `direction` property expects for `string` value type value that's accepted `top`, `right`, `bottom`, `left`. `top` is the default value.
+- `direction` property expects for `string` value type value that's accepted `top`, `right`, `bottom`, `left`. Defaults to `top`
 
-- `spaceBetweenButtons` - property expects a valid number value in `px` to define the space between each `float-button-item`, Defaults to `55`
+- `spaceBetweenButtons` - property expects a valid number value in `px` to define the space between each `ngc-float-item-button`, Defaults to `55`
 
 Sample: `[open]`
 
@@ -138,7 +138,7 @@ Sample: `[direction]`
 - `icon` property expects for `icon_name` listed in Google Material Icons site.
 - `color` property define the background color and expects a `background:{value}` valid value. Defaults to `white`.
 - `disabled` property expects a `boolean` to toggle if a button is clickable. Defaults to `false`.
-- `content` property expects `string` value to show additional text in `float-item-button`
+- `content` property expects `string` value to show additional text in `ngc-float-item-button`
 
 #### @Output property
 
