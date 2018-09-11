@@ -105,6 +105,7 @@ export class NgcFloatItemButtonComponent implements OnInit {
   }
 
 ngOnInit(): void {
+    //if a custom icon is set, add it to the icon registry
     if (this.customIconPath && this.customIconName) {
       this.matIconRegistry.addSvgIcon(
         this.customIconName,

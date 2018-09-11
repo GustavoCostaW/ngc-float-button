@@ -92,7 +92,7 @@ import {
   `],
   template: `
     <nav class="fab-menu" [class.active]="(state | async).display">
-    <a class="fab-toggle" (click)="toggle('click')" [style.backgroundColor]="color">
+    <a class="fab-toggle" (click)="toggle()" [style.backgroundColor]="color">
     <mat-icon *ngIf="icon" > {{ icon }} </mat-icon>
     <mat-icon *ngIf="customIconName" [svgIcon]="customIconName"></mat-icon>
         </a>
@@ -110,18 +110,12 @@ class NgcFloatButtonComponent implements OnInit, AfterContentInit, OnDestroy, On
   @Input() customIconName: string;
   @Input() customIconPath: string;
   @Input() direction: string;
-  // tslint:disable-next-line:no-inferrable-types
   @Input() allowToggle: boolean = true;
-  // tslint:disable-next-line:no-inferrable-types
   @Input() spaceBetweenButtons: number = 55;
   @Input() open: Subject<boolean>;
-  // tslint:disable-next-line:no-inferrable-types
   @Input() color: string = '#dd0031';
-  // tslint:disable-next-line:no-inferrable-types
   @Input() disabled: boolean = false;
-  // tslint:disable-next-line:no-inferrable-types
   @Input() textToLower: boolean = false;
-  // tslint:disable-next-line:no-inferrable-types
   @Output() events: Subject<any> = new Subject();
   @ContentChildren(NgcFloatItemButtonComponent) buttons;
 
@@ -137,6 +131,7 @@ class NgcFloatButtonComponent implements OnInit, AfterContentInit, OnDestroy, On
   }
 
   ngOnInit(): void {
+    //if a custom icon is set, add it to the icon registry
     if (this.customIconPath && this.customIconName) {
       this.matIconRegistry.addSvgIcon(
         this.customIconName,
@@ -145,10 +140,11 @@ class NgcFloatButtonComponent implements OnInit, AfterContentInit, OnDestroy, On
     }
   }
 
-  public toggle(eventSource: string) {
+  public toggle() {
     if (this.disabled) {
       return this.disabled;
     }
+    //if toggle is allowed, toggle menu
     if (this.allowToggle) {
       this.state.next({
         ...this.state.getValue(),
