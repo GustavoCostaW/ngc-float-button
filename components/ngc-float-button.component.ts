@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NgcFloatItemButtonComponent } from './ngc-float-item-button.component';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import {
   Component,
   Input,
@@ -16,7 +18,8 @@ import {
   AfterContentInit,
   OnDestroy,
   Output,
-  OnChanges
+  OnChanges,
+  OnInit
 } from '@angular/core';
 
 @Component({
@@ -89,29 +92,40 @@ import {
   `],
   template: `
     <nav class="fab-menu" [class.active]="(state | async).display">
-        <a class="fab-toggle" (click)="toggle()" [style.backgroundColor]="color">
-          <mat-icon> {{icon}} </mat-icon>
+    <a class="fab-toggle" (click)="toggle('click')" [style.backgroundColor]="color">
+    <mat-icon *ngIf="icon" > {{ icon }} </mat-icon>
+    <mat-icon *ngIf="customIconName" [svgIcon]="customIconName"></mat-icon>
         </a>
         <ng-content></ng-content>
     </nav>
   `
 })
 
-export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnChanges {
+class NgcFloatButtonComponent implements OnInit, AfterContentInit, OnDestroy, OnChanges {
   private elementref: HTMLElement;
   private subs: Subscription[] = [];
   public state: BehaviorSubject<any>;
 
   @Input() icon: string;
+  @Input() customIconName: string;
+  @Input() customIconPath: string;
   @Input() direction: string;
+  // tslint:disable-next-line:no-inferrable-types
+  @Input() allowToggle: boolean = true;
+  // tslint:disable-next-line:no-inferrable-types
   @Input() spaceBetweenButtons: number = 55;
   @Input() open: Subject<boolean>;
+  // tslint:disable-next-line:no-inferrable-types
   @Input() color: string = '#dd0031';
+  // tslint:disable-next-line:no-inferrable-types
   @Input() disabled: boolean = false;
+  // tslint:disable-next-line:no-inferrable-types
+  @Input() textToLower: boolean = false;
+  // tslint:disable-next-line:no-inferrable-types
   @Output() events: Subject<any> = new Subject();
   @ContentChildren(NgcFloatItemButtonComponent) buttons;
 
-  constructor(private element: ElementRef, private cd: ChangeDetectorRef) {
+  constructor(private element: ElementRef, private cd: ChangeDetectorRef, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.elementref = element.nativeElement;
 
     this.state = new BehaviorSubject({
@@ -122,15 +136,26 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
     });
   }
 
-  public toggle() {
+  ngOnInit(): void {
+    if (this.customIconPath && this.customIconName) {
+      this.matIconRegistry.addSvgIcon(
+        this.customIconName,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(this.customIconPath)
+      );
+    }
+  }
+
+  public toggle(eventSource: string) {
     if (this.disabled) {
       return this.disabled;
     }
-    this.state.next({
-      ...this.state.getValue(),
-      display: !this.state.getValue().display,
-      event: !this.state.getValue().display ? 'open' : 'close'
-    });
+    if (this.allowToggle) {
+      this.state.next({
+        ...this.state.getValue(),
+        display: !this.state.getValue().display,
+        event: !this.state.getValue().display ? 'open' : 'close'
+      });
+    }
   }
 
   // only top and bottom support content element
@@ -144,15 +169,18 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
 
       this.buttons.toArray().forEach(element => {
         element.contentref.nativeElement.style.display = display;
+        if (this.textToLower) {
+          element.contentref.nativeElement.class.add('textLower');
+        }
       });
     }
   }
 
   // transition
   private animateButtons(eventType) {
-    this.buttons.toArray().forEach( (btn, i) => {
-      i+=1;
-      let style = btn.elementref.nativeElement.style;
+    this.buttons.toArray().forEach((btn, i) => {
+      i += 1;
+      const style = btn.elementref.nativeElement.style;
 
       if (eventType !== 'directionChanged' && this.state.getValue().display) {
         style['transform'] = 'scale(1)';
@@ -163,15 +191,15 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
         }
       }
 
-      setTimeout( () => {
-        style['transition-duration'] = this.state.getValue().display ? `${ 90 + (100 * i) }ms` : '';
+      setTimeout(() => {
+        style['transition-duration'] = this.state.getValue().display ? `${90 + (100 * i)}ms` : '';
         style['transform'] = this.state.getValue().display ? this.getTranslate(i) : '';
       }, 50);
 
       if (eventType !== 'directionChanged' && !this.state.getValue().display) {
-        btn.timeout = setTimeout( () => {
+        btn.timeout = setTimeout(() => {
           style['transform'] = 'scale(0)';
-        }, 90 + (100 * i) );
+        }, 90 + (100 * i));
       }
     });
   }
@@ -179,27 +207,27 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
   // get transition direction
   private getTranslate(i) {
 
-      let animation;
+    let animation;
 
-      switch (this.direction) {
-        case 'right' :
-           animation = `translate3d(${ this.state.getValue().spaceBetweenButtons * i }px,0,0)`;
-           break;
-        case  'bottom' :
-          animation = `translate3d(0,${ this.state.getValue().spaceBetweenButtons * i }px,0)`;
-          break;
-        case 'left' :
-          animation = `translate3d(-${ this.state.getValue().spaceBetweenButtons * i }px,0,0)`;
-          break;
-        default :
-          animation = `translate3d(0,-${ this.state.getValue().spaceBetweenButtons * i }px,0)`;
-          break;
-      }
+    switch (this.direction) {
+      case 'right':
+        animation = `translate3d(${this.state.getValue().spaceBetweenButtons * i}px,0,0)`;
+        break;
+      case 'bottom':
+        animation = `translate3d(0,${this.state.getValue().spaceBetweenButtons * i}px,0)`;
+        break;
+      case 'left':
+        animation = `translate3d(-${this.state.getValue().spaceBetweenButtons * i}px,0,0)`;
+        break;
+      default:
+        animation = `translate3d(0,-${this.state.getValue().spaceBetweenButtons * i}px,0)`;
+        break;
+    }
 
-      return animation;
+    return animation;
   }
 
-  /* some problems here */
+    /* some problems here */
   // @HostListener('document:click', ['$event.target']) private clickOutside(target) {
   //   if (this.state.getValue().display && !this.elementref.contains(target)) {
   //     this.state.next({
@@ -218,19 +246,20 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
 
     this.buttons.toArray().map(v => {
       const sub = v.clicked.subscribe(() => {
-        this.state.next({
-          ...this.state.getValue(),
-          display: false,
-          event: 'close'
-        });
+        if (this.allowToggle) {
+          this.state.next({
+            ...this.state.getValue(),
+            display: false,
+            event: 'close'
+          });
+        }
       });
 
       this.subs.push(sub);
     });
 
-    const sub = this.state.subscribe( v => {
+    const sub = this.state.subscribe(v => {
       this.animateButtons(v.event);
-
       this.events.next({
         display: v.display,
         event: v.event,
@@ -284,3 +313,5 @@ export class NgcFloatButtonComponent implements AfterContentInit, OnDestroy, OnC
     });
   }
 }
+
+export { NgcFloatButtonComponent, NgcFloatItemButtonComponent };
