@@ -1,12 +1,15 @@
 /* created by @GustavoCostaW https://github.com/gustavocostaw/ngc-float-button  */
 
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import {
   Component,
   Input,
   Output,
   EventEmitter,
   ViewChild,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  OnInit
 } from '@angular/core';
 
 @Component({
@@ -28,11 +31,11 @@ import {
     justify-content: flex-end;
     align-items: center;
   }
-  
+
   .item.disabled {
     pointer-events: none;
   }
-  
+
   .item.disabled .fab-item {
     background-color: lightgray;
   }
@@ -65,34 +68,56 @@ import {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   }
 
+  .textLower {
+    text-transform: lowercase;
+  }
+
 
   `],
   template: `
-    <div #elementref class="item {{ disabled ? 'disabled' : ''}}" 
+    <div #elementref class="item {{ disabled ? 'disabled' : ''}}"
     (click)="emitClickEvent($event)">
         <div class="content-wrapper" #contentref>
           <div class="content" [style.display]="content ? 'block' : 'none'">{{content}}</div>
         </div>
         <a class="fab-item" [style.backgroundColor]="color">
-           <mat-icon> {{ icon }} </mat-icon>
+           <mat-icon *ngIf="icon" > {{ icon }} </mat-icon>
+           <mat-icon *ngIf="customIconName" [svgIcon]="customIconName"></mat-icon>
         </a>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgcFloatItemButtonComponent {
+export class NgcFloatItemButtonComponent implements OnInit {
   @Input() icon: string;
+  @Input() customIconName: string;
+  @Input() customIconPath: string;
   @Input() content: string;
+  // tslint:disable-next-line:no-inferrable-types
   @Input() color: string = 'white';
   @Output() clicked: EventEmitter<any> = new EventEmitter();
+  // tslint:disable-next-line:no-inferrable-types
   @Input() disabled: boolean = false;
   @ViewChild('elementref') elementref;
   @ViewChild('contentref') contentref;
 
-  emitClickEvent($event: Event) {
-    if (this.disabled)
-      return this.disabled;
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+  }
 
+ngOnInit(): void {
+    //if a custom icon is set, add it to the icon registry
+    if (this.customIconPath && this.customIconName) {
+      this.matIconRegistry.addSvgIcon(
+        this.customIconName,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(this.customIconPath)
+      );
+    }
+}
+
+  emitClickEvent($event: Event) {
+    if (this.disabled) {
+      return this.disabled;
+    }
     this.clicked.emit($event);
   }
 }
