@@ -18,6 +18,23 @@
     "button"
   ],
   "author": "Gustavo Costa - @GustavoCostaW",
+  "contributors": [
+    {
+      "name": "Guilherme Siquinelli",
+      "email": "guiseek@gmail.com",
+      "url": "https://github.com/guiseek"
+    },
+    {
+      "name": "Aundra Miller",
+      "email": "aumiller@learning.com",
+      "url": "https://github.com/milleraundra"
+    },
+    {
+      "name": "Alex Szabó",
+      "email": "kreatemore@gmail.com",
+      "url": "https://github.com/kreatemore"
+    }
+  ],
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": ">=4.4.4"

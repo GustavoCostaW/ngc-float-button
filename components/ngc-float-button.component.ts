@@ -1,23 +1,10 @@
 /* created by @GustavoCostaW https://github.com/gustavocostaw/ngc-float-button  */
 
-import { Observable } from 'rxjs/Observable';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, Input, OnChanges, OnDestroy, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NgcFloatItemButtonComponent } from './ngc-float-item-button.component';
-import {
-  Component,
-  Input,
-  ContentChildren,
-  ElementRef,
-  HostListener,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  AfterContentInit,
-  OnDestroy,
-  Output,
-  OnChanges
-} from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,8 +33,11 @@ import {
     width: 40px;
     height: 40px;
     color: white;
-    text-align: center;
-    line-height: 50px;
+    /* text-align: center; */
+    /* line-height: 50px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transform: translate3d(0, 0, 0);
     transition: all ease-out 200ms;
     z-index: 2;
@@ -90,7 +80,8 @@ import {
   template: `
     <nav class="fab-menu" [class.active]="(state | async).display">
         <a class="fab-toggle" (click)="toggle()" [style.backgroundColor]="color">
-          <mat-icon> {{icon}} </mat-icon>
+          <i class="material-icons">{{ icon }}</i>
+          <!-- <mat-icon> {{icon}} </mat-icon> -->
         </a>
         <ng-content></ng-content>
     </nav>
