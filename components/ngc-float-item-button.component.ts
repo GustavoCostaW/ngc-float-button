@@ -1,13 +1,6 @@
 /* created by @GustavoCostaW https://github.com/gustavocostaw/ngc-float-button  */
 
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ChangeDetectionStrategy
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'ngc-float-item-button',
@@ -28,11 +21,11 @@ import {
     justify-content: flex-end;
     align-items: center;
   }
-  
+
   .item.disabled {
     pointer-events: none;
   }
-  
+
   .item.disabled .fab-item {
     background-color: lightgray;
   }
@@ -68,13 +61,14 @@ import {
 
   `],
   template: `
-    <div #elementref class="item {{ disabled ? 'disabled' : ''}}" 
+    <div #elementref class="item {{ disabled ? 'disabled' : ''}}"
     (click)="emitClickEvent($event)">
         <div class="content-wrapper" #contentref>
           <div class="content" [style.display]="content ? 'block' : 'none'">{{content}}</div>
         </div>
         <a class="fab-item" [style.backgroundColor]="color">
-           <mat-icon> {{ icon }} </mat-icon>
+          <i class="material-icons">{{ icon }}</i>
+           <!-- <mat-icon> {{ icon }} </mat-icon> -->
         </a>
     </div>
   `,
